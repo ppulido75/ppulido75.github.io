@@ -26,20 +26,13 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* --- Sombra interactiva (Spotlight) --- */
         #spotlight {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle 400px at var(--x, 50%) var(--y, 50%), rgba(56, 189, 248, 0.08), transparent 80%);
             z-index: -1; pointer-events: none;
         }
-
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
 
         header {
             position: fixed; top: 0; width: 100%; padding: 20px 5%;
@@ -55,31 +48,19 @@
         nav a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        /* --- Hero --- */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 20px;
-        }
-
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
         .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -4px; line-height: 1; margin-bottom: 25px; min-height: 1.2em; }
-        .hero h1 span { color: var(--accent); }
         .cursor { display: inline-block; width: 5px; background-color: var(--accent); margin-left: 5px; animation: blink 0.8s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        .hero p { font-size: 1.1rem; color: var(--text-dim); max-width: 650px; margin-bottom: 35px; }
-
-        /* --- Secciones --- */
-        section { padding: 120px 8%; border-bottom: 1px solid var(--border); position: relative; }
+        section { padding: 120px 8%; border-bottom: 1px solid var(--border); }
         .section-tag { color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 15px; }
         .section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 60px; letter-spacing: -2px; }
 
-        /* --- Habilidades Grid --- */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .skill-card { background: var(--card-bg); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.4s; }
-        .skill-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-5px); background: rgba(17, 24, 39, 0.9); }
-        .skill-card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--accent); }
+        .skill-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-5px); }
 
-        /* --- Proyecto Destacado --- */
         .project-featured {
             background: var(--bg-alt); border: 1px solid var(--border); border-radius: 15px; padding: 50px;
             display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 40px;
@@ -91,9 +72,13 @@
             border-radius: 6px; margin-top: 20px; transition: 0.3s;
         }
 
-        /* --- Timeline Estudios --- */
+        .future-project { border: 2px dashed var(--border); background: transparent; opacity: 0.6; }
+        .future-project h3 { color: var(--text-dim) !important; }
+
         .edu-item { margin-bottom: 40px; padding-left: 30px; border-left: 2px solid var(--border); position: relative; }
         .edu-item::before { content: ""; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
+
+        .lang-badge { display: inline-block; padding: 5px 15px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-weight: 700; font-size: 0.8rem; margin-top: 10px; }
 
         footer { padding: 100px 8% 50px; background: var(--bg-alt); text-align: center; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0, 0.2, 1); }
@@ -121,9 +106,6 @@
         <span class="section-tag reveal">FullStack Developer @ Neorg</span>
         <h1 class="reveal" id="typewriter"></h1>
         <p class="reveal">Especialista en arquitecturas robustas y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.</p>
-        <div class="reveal">
-            <a href="#projects" style="color: var(--accent); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); padding-bottom: 5px;">Explorar Portfolio</a>
-        </div>
     </section>
 
     <section id="about">
@@ -132,47 +114,59 @@
         <div class="skills-grid">
             <div class="skill-card reveal">
                 <h3>Autoaprendizaje</h3>
-                <p>Capacidad crítica para la resolución de problemas técnicos complejos mediante la investigación y experimentación con nuevas tecnologías.</p>
+                <p>Capacidad crítica para la resolución de problemas técnicos complejos mediante la investigación constante.</p>
             </div>
             <div class="skill-card reveal">
                 <h3>Visión Global</h3>
-                <p>Desde la infraestructura VPS hasta la UI móvil. Entiendo el ciclo de vida completo del desarrollo de software.</p>
+                <p>Desde la infraestructura VPS hasta la UI móvil. Entiendo el ciclo de vida completo del software.</p>
             </div>
         </div>
     </section>
 
     <section id="projects" style="background: var(--bg-alt);">
-        <span class="section-tag">Producción Real</span>
-        <h2 class="section-title reveal">Proyecto Destacado</h2>
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title reveal">Casos de Éxito</h2>
+        
         <div class="project-featured reveal">
             <div class="project-info">
-                <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">E-COMMERCE & COMUNIDAD</span>
+                <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">PROYECTO PERSONAL</span>
                 <h3>mystic-cards.com</h3>
-                <p>Plataforma integral de venta de TCG. Optimización avanzada de rendimiento, gestión de servidores propios y escalabilidad en WordPress.</p>
+                <p>Plataforma de e-commerce TCG con optimización WPO avanzada y gestión integral de servidores.</p>
                 <a href="https://mystic-cards.com" target="_blank" class="project-link">Ver sitio en vivo</a>
             </div>
-            <div style="height: 250px; background: rgba(255,255,255,0.03); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px;">
-                MYSTIC CARDS PREVIEW
+            <div style="height: 200px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.8rem;">LIVE PREVIEW</div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal future-project">
+                <h3>[Symfony Project I]</h3>
+                <p>Próximamente: Aplicación escalable con arquitectura MVC, Doctrine ORM y gestión de APIs RESTful.</p>
+            </div>
+            <div class="skill-card reveal future-project">
+                <h3>[Symfony Project II]</h3>
+                <p>Próximamente: Desarrollo enfocado en servicios backend complejos y seguridad avanzada en Symfony.</p>
             </div>
         </div>
     </section>
 
-    <section id="stack">
-        <span class="section-tag">Habilidades</span>
-        <h2 class="section-title reveal">Stack Técnico</h2>
+    <section id="edu">
+        <span class="section-tag">Trayectoria Académica</span>
+        <h2 class="section-title reveal">Titulaciones e Idiomas</h2>
+        
         <div class="skills-grid">
-            <div class="skill-card reveal"><h3>Backend</h3><p>PHP 8.3 (Neorg stack), Symfony, Java y MySQL.</p></div>
-            <div class="skill-card reveal"><h3>Frontend</h3><p>JavaScript Moderno, Vue.js, Angular, HTML5 & CSS Avanzado.</p></div>
-            <div class="skill-card reveal"><h3>Mobile</h3><p>Desarrollo nativo Android con Kotlin. Apps Multiplataforma.</p></div>
+            <div class="education-column">
+                <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Apps Multiplataforma (DAM)</h4></div>
+                <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Aplicaciones Web (DAW)</h4></div>
+                <div class="edu-item reveal"><span>Técnico</span><h4>Sistemas Microinformáticos y Redes (SMR)</h4></div>
+            </div>
+            
+            <div class="skill-card reveal" style="height: fit-content;">
+                <h3>Idiomas</h3>
+                <p>Capacidad para trabajar en entornos internacionales y documentación técnica.</p>
+                <div class="lang-badge">INGLÉS: B2 (Upper Intermediate)</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-dim);">Manejo fluido en lectura técnica, escritura y comunicación verbal.</p>
+            </div>
         </div>
-    </section>
-
-    <section id="edu" style="background: var(--bg-alt);">
-        <span class="section-tag">Formación</span>
-        <h2 class="section-title reveal">Estudios Oficiales</h2>
-        <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Apps Multiplataforma (DAM)</h4></div>
-        <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Aplicaciones Web (DAW)</h4></div>
-        <div class="edu-item reveal"><span>Técnico</span><h4>Sistemas Microinformáticos y Redes (SMR)</h4></div>
     </section>
 
     <footer>
@@ -183,58 +177,35 @@
     </footer>
 
     <script>
-        // --- Spotlight Effect ---
+        // Spotlight
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', e => {
             spotlight.style.setProperty('--x', e.clientX + 'px');
             spotlight.style.setProperty('--y', e.clientY + 'px');
         });
 
-        // --- Typing Animation ---
+        // Typing
         const textArr = ["FullStack Developer", "Software Engineer"];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        let textIndex = 0, charIndex = 0, isDeleting = false;
         const typeTarget = document.getElementById('typewriter');
 
         function type() {
             const current = textArr[textIndex];
-            if (isDeleting) {
-                typeTarget.innerHTML = current.substring(0, charIndex - 1) + '<span class="cursor"></span>';
-                charIndex--;
-            } else {
-                typeTarget.innerHTML = current.substring(0, charIndex + 1) + '<span class="cursor"></span>';
-                charIndex++;
-            }
-
+            typeTarget.innerHTML = current.substring(0, charIndex + (isDeleting ? -1 : 1)) + '<span class="cursor"></span>';
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
             let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === current.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Pausa al final
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % textArr.length;
-                typeSpeed = 500;
-            }
-
+            if (!isDeleting && charIndex === current.length) { isDeleting = true; typeSpeed = 2000; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % textArr.length; typeSpeed = 500; }
             setTimeout(type, typeSpeed);
         }
 
-        // --- Intersection Observer ---
+        // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        window.onload = () => { 
-            type();
-            window.addEventListener('scroll', () => {
-                const h = document.getElementById('main-header');
-                h.style.padding = window.scrollY > 50 ? '15px 5%' : '20px 5%';
-            });
-        };
+        window.onload = () => { type(); };
     </script>
 </body>
 </html>
