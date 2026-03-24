@@ -60,6 +60,7 @@
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .skill-card { background: var(--card-bg); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.4s; }
         .skill-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-5px); }
+        .skill-card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--accent); }
 
         .project-featured {
             background: var(--bg-alt); border: 1px solid var(--border); border-radius: 15px; padding: 50px;
@@ -73,12 +74,14 @@
         }
 
         .future-project { border: 2px dashed var(--border); background: transparent; opacity: 0.6; }
-        .future-project h3 { color: var(--text-dim) !important; }
-
         .edu-item { margin-bottom: 40px; padding-left: 30px; border-left: 2px solid var(--border); position: relative; }
         .edu-item::before { content: ""; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
 
-        .lang-badge { display: inline-block; padding: 5px 15px; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-weight: 700; font-size: 0.8rem; margin-top: 10px; }
+        /* --- Badge Styles --- */
+        .badge-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .badge { padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; }
+        .badge-accent { background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); }
+        .badge-dim { background: rgba(148, 163, 184, 0.05); border: 1px solid var(--border); color: var(--text-dim); }
 
         footer { padding: 100px 8% 50px; background: var(--bg-alt); text-align: center; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0, 0.2, 1); }
@@ -95,7 +98,7 @@
         <div class="logo">PAU<span>PULIDO</span></div>
         <nav>
             <ul>
-                <li><a href="#about">Perfil</a></li>
+                <li><a href="#about">Experiencia</a></li>
                 <li><a href="#projects">Proyectos</a></li>
                 <li><a href="#edu">Estudios</a></li>
             </ul>
@@ -109,16 +112,16 @@
     </section>
 
     <section id="about">
-        <span class="section-tag">Metodología</span>
-        <h2 class="section-title reveal">Investigación Continua.</h2>
+        <span class="section-tag">Perfil Profesional</span>
+        <h2 class="section-title reveal">Trayectoria & Enfoque.</h2>
         <div class="skills-grid">
-            <div class="skill-card reveal">
-                <h3>Autoaprendizaje</h3>
-                <p>Capacidad crítica para la resolución de problemas técnicos complejos mediante la investigación constante.</p>
+            <div class="skill-card reveal" style="border-left: 4px solid var(--accent);">
+                <h3>+1 Año en Producción</h3>
+                <p>Desarrollo activo en entornos profesionales con <b>PHP, HTML y CSS</b>. Especializado en el framework <b>Symfony</b> y en la evolución técnica de sistemas <b>ERP</b> a medida.</p>
             </div>
             <div class="skill-card reveal">
-                <h3>Visión Global</h3>
-                <p>Desde la infraestructura VPS hasta la UI móvil. Entiendo el ciclo de vida completo del software.</p>
+                <h3>Autoaprendizaje</h3>
+                <p>Capacidad para dominar nuevas tecnologías mediante la investigación directa. Enfoque resolutivo orientado a la eficiencia del código.</p>
             </div>
         </div>
     </section>
@@ -131,7 +134,7 @@
             <div class="project-info">
                 <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">PROYECTO PERSONAL</span>
                 <h3>mystic-cards.com</h3>
-                <p>Plataforma de e-commerce TCG con optimización WPO avanzada y gestión integral de servidores.</p>
+                <p>E-commerce TCG real. Optimización de carga (WPO), gestión de bases de datos y administración de servidor VPS propio.</p>
                 <a href="https://mystic-cards.com" target="_blank" class="project-link">Ver sitio en vivo</a>
             </div>
             <div style="height: 200px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.8rem;">LIVE PREVIEW</div>
@@ -139,18 +142,18 @@
 
         <div class="skills-grid">
             <div class="skill-card reveal future-project">
-                <h3>[Symfony Project I]</h3>
-                <p>Próximamente: Aplicación escalable con arquitectura MVC, Doctrine ORM y gestión de APIs RESTful.</p>
+                <h3>[Desarrollo Symfony I]</h3>
+                <p>Próximamente: Integración de servicios REST y lógica de negocio avanzada bajo Symfony.</p>
             </div>
             <div class="skill-card reveal future-project">
-                <h3>[Symfony Project II]</h3>
-                <p>Próximamente: Desarrollo enfocado en servicios backend complejos y seguridad avanzada en Symfony.</p>
+                <h3>[Desarrollo Symfony II]</h3>
+                <p>Próximamente: Optimización de procesos internos y gestión de datos complejos.</p>
             </div>
         </div>
     </section>
 
     <section id="edu">
-        <span class="section-tag">Trayectoria Académica</span>
+        <span class="section-tag">Trayectoria</span>
         <h2 class="section-title reveal">Titulaciones e Idiomas</h2>
         
         <div class="skills-grid">
@@ -162,9 +165,13 @@
             
             <div class="skill-card reveal" style="height: fit-content;">
                 <h3>Idiomas</h3>
-                <p>Capacidad para trabajar en entornos internacionales y documentación técnica.</p>
-                <div class="lang-badge">INGLÉS: B2 (Upper Intermediate)</div>
-                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-dim);">Manejo fluido en lectura técnica, escritura y comunicación verbal.</p>
+                <p>Comunicación fluida en entornos multiculturales.</p>
+                <div class="badge-container">
+                    <span class="badge badge-accent">Català: Nativo</span>
+                    <span class="badge badge-accent">Castellano: Nativo</span>
+                    <span class="badge badge-accent">English: B2</span>
+                </div>
+                <p style="font-size: 0.85rem; margin-top: 15px; color: var(--text-dim);">Capacidad para trabajar directamente con documentación técnica internacional y equipos locales.</p>
             </div>
         </div>
     </section>
@@ -177,15 +184,13 @@
     </footer>
 
     <script>
-        // Spotlight
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', e => {
             spotlight.style.setProperty('--x', e.clientX + 'px');
             spotlight.style.setProperty('--y', e.clientY + 'px');
         });
 
-        // Typing
-        const textArr = ["FullStack Developer", "Software Engineer"];
+        const textArr = ["FullStack Developer", "Symfony Specialist", "PHP Engineer"];
         let textIndex = 0, charIndex = 0, isDeleting = false;
         const typeTarget = document.getElementById('typewriter');
 
@@ -199,7 +204,6 @@
             setTimeout(type, typeSpeed);
         }
 
-        // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
