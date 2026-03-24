@@ -77,11 +77,9 @@
         .edu-item { margin-bottom: 40px; padding-left: 30px; border-left: 2px solid var(--border); position: relative; }
         .edu-item::before { content: ""; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
 
-        /* --- Badge Styles --- */
         .badge-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .badge { padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; }
         .badge-accent { background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); }
-        .badge-dim { background: rgba(148, 163, 184, 0.05); border: 1px solid var(--border); color: var(--text-dim); }
 
         footer { padding: 100px 8% 50px; background: var(--bg-alt); text-align: center; }
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0, 0.2, 1); }
@@ -108,7 +106,7 @@
     <section class="hero">
         <span class="section-tag reveal">FullStack Developer @ Neorg</span>
         <h1 class="reveal" id="typewriter"></h1>
-        <p class="reveal">Especialista en arquitecturas robustas y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.</p>
+        <p class="reveal">Especialista en desarrollo web y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.</p>
     </section>
 
     <section id="about">
@@ -116,12 +114,12 @@
         <h2 class="section-title reveal">Trayectoria & Enfoque.</h2>
         <div class="skills-grid">
             <div class="skill-card reveal" style="border-left: 4px solid var(--accent);">
-                <h3>+1 Año en Producción</h3>
-                <p>Desarrollo activo en entornos profesionales con <b>PHP, HTML y CSS</b>. Especializado en el framework <b>Symfony</b> y en la evolución técnica de sistemas <b>ERP</b> a medida.</p>
+                <h3>1 Año de Experiencia</h3>
+                <p>Rodaje profesional en el stack <b>HTML, CSS, JS y PHP</b>. He trabajado en el desarrollo Frontend de sistemas <b>ERP</b> que interactúan con backend en PHP y he gestionado el mantenimiento y mejora de sitios web bajo <b>Symfony</b>.</p>
             </div>
             <div class="skill-card reveal">
                 <h3>Autoaprendizaje</h3>
-                <p>Capacidad para dominar nuevas tecnologías mediante la investigación directa. Enfoque resolutivo orientado a la eficiencia del código.</p>
+                <p>Capacidad para dominar nuevas herramientas mediante la investigación directa. Enfoque resolutivo orientado a la eficiencia del código en entornos reales.</p>
             </div>
         </div>
     </section>
@@ -142,12 +140,12 @@
 
         <div class="skills-grid">
             <div class="skill-card reveal future-project">
-                <h3>[Desarrollo Symfony I]</h3>
-                <p>Próximamente: Integración de servicios REST y lógica de negocio avanzada bajo Symfony.</p>
+                <h3>[Desarrollo Symfony]</h3>
+                <p>Próximamente: Implementación de funcionalidades avanzadas y gestión de servicios bajo el ecosistema Symfony.</p>
             </div>
             <div class="skill-card reveal future-project">
-                <h3>[Desarrollo Symfony II]</h3>
-                <p>Próximamente: Optimización de procesos internos y gestión de datos complejos.</p>
+                <h3>[Desarrollo Web PHP]</h3>
+                <p>Próximamente: Integración de lógica de negocio y optimización de interfaces dinámicas.</p>
             </div>
         </div>
     </section>
@@ -171,7 +169,6 @@
                     <span class="badge badge-accent">Castellano: Nativo</span>
                     <span class="badge badge-accent">English: B2</span>
                 </div>
-                <p style="font-size: 0.85rem; margin-top: 15px; color: var(--text-dim);">Capacidad para trabajar directamente con documentación técnica internacional y equipos locales.</p>
             </div>
         </div>
     </section>
@@ -190,7 +187,7 @@
             spotlight.style.setProperty('--y', e.clientY + 'px');
         });
 
-        const textArr = ["FullStack Developer", "Symfony Specialist", "PHP Engineer"];
+        const textArr = ["FullStack Developer", "Web Developer"];
         let textIndex = 0, charIndex = 0, isDeleting = false;
         const typeTarget = document.getElementById('typewriter');
 
