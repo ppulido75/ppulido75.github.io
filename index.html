@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pau Pulido Cano | Full Stack & Kotlin Expert</title>
+    <title>Pau Pulido Cano | Full Stack Developer @ Neorg</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap">
     <style>
         :root {
@@ -28,11 +28,7 @@
         }
 
         /* --- Fondo Animado de Partículas --- */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            z-index: -1;
-        }
+        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
         /* --- Navbar Glassmorphism --- */
         nav {
@@ -52,7 +48,6 @@
 
         .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; }
         .logo span { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
-
         nav ul { display: flex; gap: 25px; list-style: none; }
         nav a { text-decoration: none; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
@@ -75,11 +70,11 @@
             margin-bottom: 20px;
         }
 
-        .typing-container { font-size: 1.5rem; color: var(--text-dim); height: 30px; margin-bottom: 30px;}
+        .typing-container { font-size: 1.3rem; color: var(--text-dim); height: 30px; margin-bottom: 30px;}
         .cursor { animation: blink 0.7s infinite; color: var(--accent); }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* --- Grid de Lenguajes --- */
+        /* --- Grid de Stack --- */
         .section-title { text-align: center; font-size: 2.5rem; margin: 80px 0 50px; font-weight: 800; }
         
         .languages-grid {
@@ -106,29 +101,21 @@
             box-shadow: 0 15px 35px var(--accent-glow);
         }
 
+        .active-stack { border-color: rgba(0, 242, 255, 0.5); background: rgba(0, 242, 255, 0.05); }
+
         .lang-card h3 { font-size: 1.8rem; margin-bottom: 12px; color: var(--accent); letter-spacing: -1px; }
         .lang-card p { font-size: 0.95rem; color: var(--text-dim); }
 
-        .kotlin-card h3 { color: var(--kotlin); }
-        .kotlin-card:hover { border-color: var(--kotlin); box-shadow: 0 15px 35px rgba(127, 82, 255, 0.3); }
-
-        /* --- Botones --- */
+        /* --- Contact --- */
         .contact-btns { display: flex; gap: 20px; margin-top: 20px; }
-        .btn {
-            padding: 16px 38px; border-radius: 14px; font-weight: 800;
-            text-decoration: none; transition: 0.3s;
-        }
+        .btn { padding: 16px 38px; border-radius: 14px; font-weight: 800; text-decoration: none; transition: 0.3s; }
         .btn-main { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent-glow); }
         .btn-main:hover { transform: scale(1.05); background: #fff; }
 
-        /* --- Reveal --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { letter-spacing: -2px; }
-        }
+        @media (max-width: 768px) { nav ul { display: none; } .hero h1 { letter-spacing: -2px; } }
     </style>
 </head>
 <body>
@@ -145,7 +132,7 @@
     </nav>
 
     <section class="hero" id="hero">
-        <h1 class="reveal">SOFTWARE<br>ENGINEER.</h1>
+        <h1 class="reveal">CRAFTING<br>SOLUTIONS.</h1>
         <div class="typing-container">
             <span id="typewriter"></span><span class="cursor">|</span>
         </div>
@@ -156,41 +143,43 @@
     </section>
 
     <section id="languages">
-        <h2 class="section-title reveal">Dominio Técnico</h2>
+        <h2 class="section-title reveal">Stack & Enfoque Actual</h2>
         <div class="languages-grid">
-            <div class="lang-card reveal kotlin-card"><h3>KOTLIN</h3><p>Desarrollo Android moderno con Jetpack Compose.</p></div>
-            <div class="lang-card reveal"><h3>SYMFONY</h3><p>Backend robusto para aplicaciones de gran escala.</p></div>
-            <div class="lang-card reveal"><h3>VUE / ANGULAR</h3><p>Frontend dinámico y arquitecturas SPA.</p></div>
-            <div class="lang-card reveal"><h3>PHP 8.3</h3><p>Lógica de negocio y APIs de alto rendimiento.</p></div>
-            <div class="lang-card reveal"><h3>JAVA</h3><p>Estructura sólida y aplicaciones nativas.</p></div>
-            <div class="lang-card reveal"><h3>MYSQL</h3><p>Optimización y diseño de bases de datos.</p></div>
-            <div class="lang-card reveal"><h3>JS / TS</h3><p>Interacción y lógica avanzada en el cliente.</p></div>
-            <div class="lang-card reveal"><h3>HTML/CSS</h3><p>Interfaces fluidas con enfoque UX/UI.</p></div>
+            <div class="lang-card reveal active-stack"><h3>PHP 8.3</h3><p>Mi motor principal. Desarrollando lógica de servidor eficiente y APIs escalables.</p></div>
+            <div class="lang-card reveal active-stack"><h3>JS / TS</h3><p>Dando vida a la web con interactividad avanzada y arquitecturas modernas.</p></div>
+            <div class="lang-card reveal active-stack"><h3>HTML/CSS</h3><p>Maquetación píxel-perfect con enfoque total en UX/UI y rendimiento.</p></div>
+            
+            <div class="lang-card reveal"><h3>SYMFONY</h3><p>Estructura profesional para proyectos web de gran envergadura.</p></div>
+            <div class="lang-card reveal"><h3>KOTLIN</h3><p>Desarrollo nativo para Android. Potencia y seguridad en el código móvil.</p></div>
+            <div class="lang-card reveal"><h3>VUE / ANGULAR</h3><p>Creación de interfaces reactivas para Single Page Applications.</p></div>
+            <div class="lang-card reveal"><h3>MYSQL</h3><p>Diseño y optimización de bases de datos para alto tráfico.</p></div>
+            <div class="lang-card reveal"><h3>JAVA</h3><p>Solidez en el desarrollo de software y sistemas empresariales.</p></div>
         </div>
     </section>
 
     <section id="contact" style="padding: 100px 20px; text-align: center; background: rgba(0,242,255,0.02);">
         <h2 class="section-title reveal" style="margin-top: 0;">¿Hablamos?</h2>
-        <p class="reveal" style="color: var(--text-dim); max-width: 600px; margin: 0 auto 40px;">Actualmente en <b>Neorg</b>. Especialista en Figma, Android e infraestructura VPS.</p>
+        <p class="reveal" style="color: var(--text-dim); max-width: 700px; margin: 0 auto 40px;">
+            Actualmente trabajando en <b>Neorg</b> con el stack PHP, HTML, CSS y JS. <br>
+            También manejo diseño en Figma, desarrollo Android e infraestructura VPS (Docker/Traefik).
+        </p>
         <div class="reveal">
             <p><b>Girona, España</b></p>
-            <p style="color: var(--accent); font-weight: 800; font-size: 1.2rem;">paupcano75@gmail.com</p>
+            <p style="color: var(--accent); font-weight: 800; font-size: 1.4rem; margin-top: 10px;">paupcano75@gmail.com</p>
+            <p style="margin-top: 10px;">+34 602 05 94 88</p>
         </div>
     </section>
 
-    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid var(--border); font-size: 0.8rem; letter-spacing: 2px;">
-        PAU PULIDO CANO // 2026 // KOTLIN & SYMFONY SPECIALIST
+    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid var(--border); font-size: 0.8rem; letter-spacing: 2px; color: #444;">
+        PAU PULIDO CANO // 2026 // FULL STACK DEVELOPER
     </footer>
 
     <script>
-        // --- 1. Sistema de Partículas ---
+        // --- Partículas ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function initCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -218,22 +207,20 @@
         for(let i=0; i<120; i++) particles.push(new Particle());
         animate();
 
-        // --- 2. Typing Effect ---
-        const text = "Pau Pulido Cano | Android con Kotlin | Full Stack en Neorg";
+        // --- Typing Effect ---
+        const text = "Pau Pulido Cano | Actualmente trabajando con PHP, HTML, CSS y JS";
         let index = 0;
         function type() {
             if (index < text.length) {
                 document.getElementById('typewriter').innerHTML += text.charAt(index);
                 index++;
-                setTimeout(type, 70);
+                setTimeout(type, 60);
             }
         }
 
-        // --- 3. Intersection Observer ---
+        // --- Reveal ---
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
