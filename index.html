@@ -14,7 +14,7 @@
             --text-dim: #94a3b8;
             --accent: #38bdf8;
             --border: #1e293b;
-            --nav-bg: rgba(3, 6, 13, 0.9);
+            --nav-bg: rgba(3, 6, 13, 0.95);
             --radius: 10px;
         }
 
@@ -34,179 +34,286 @@
             z-index: -1; pointer-events: none;
         }
 
+        /* --- Header & Nav --- */
         header {
-            position: fixed; top: 0; width: 100%; padding: 20px 5%;
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
             background: var(--nav-bg); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
             display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; transition: 0.3s;
+            z-index: 1000;
         }
 
-        .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -1px; }
+        .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -1px; min-width: fit-content; }
         .logo span { color: var(--accent); }
-        nav ul { display: flex; gap: 25px; list-style: none; }
-        nav a { text-decoration: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        nav ul { display: flex; gap: 20px; list-style: none; }
+        nav a { text-decoration: none; color: var(--text-dim); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -4px; line-height: 1; margin-bottom: 25px; min-height: 1.2em; }
-        .cursor { display: inline-block; width: 5px; background-color: var(--accent); margin-left: 5px; animation: blink 0.8s infinite; }
+        /* --- Language Selector --- */
+        .lang-selector { position: relative; display: inline-block; }
+        .lang-btn { 
+            background: var(--bg); border: 1px solid var(--border); color: var(--text-main);
+            padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem;
+            font-weight: 700; display: flex; align-items: center; gap: 5px;
+        }
+        .lang-dropdown {
+            position: absolute; top: 110%; right: 0; background: var(--card-bg);
+            border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+            display: none; min-width: 100px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .lang-dropdown.active { display: block; }
+        .lang-option { 
+            padding: 8px 15px; cursor: pointer; font-size: 0.75rem; transition: 0.2s;
+        }
+        .lang-option:hover { background: var(--accent); color: var(--bg); }
+
+        /* --- Hero --- */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        .hero h1 { font-size: clamp(2.2rem, 7vw, 5rem); font-weight: 800; letter-spacing: -3px; line-height: 1.1; margin-bottom: 20px; min-height: 1.2em; }
+        .cursor { display: inline-block; width: 4px; background-color: var(--accent); margin-left: 5px; animation: blink 0.8s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
+        .hero p { font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--text-dim); max-width: 650px; }
 
-        section { padding: 120px 8%; border-bottom: 1px solid var(--border); }
-        .section-tag { color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 15px; }
-        .section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 60px; letter-spacing: -2px; }
+        /* --- Sections --- */
+        section { padding: 80px 5%; border-bottom: 1px solid var(--border); }
+        .section-tag { color: var(--accent); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+        .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 40px; letter-spacing: -1.5px; }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .skill-card { background: var(--card-bg); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.4s; }
-        .skill-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-5px); }
-        .skill-card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--accent); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--card-bg); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.4s; }
+        .skill-card h3 { margin-bottom: 12px; font-size: 1.2rem; color: var(--accent); }
 
+        /* --- Projects --- */
         .project-featured {
-            background: var(--bg-alt); border: 1px solid var(--border); border-radius: 15px; padding: 50px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 40px;
+            background: var(--bg-alt); border: 1px solid var(--border); border-radius: 15px; padding: clamp(20px, 5vw, 40px);
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; align-items: center; margin-bottom: 30px;
         }
-
         .project-link { 
-            display: inline-block; padding: 12px 28px; background: var(--accent); 
+            display: inline-block; padding: 10px 24px; background: var(--accent); 
             color: var(--bg); text-decoration: none; font-weight: 800; 
-            border-radius: 6px; margin-top: 20px; transition: 0.3s;
+            border-radius: 6px; margin-top: 20px; font-size: 0.85rem;
         }
 
-        .future-project { border: 2px dashed var(--border); background: transparent; opacity: 0.6; }
-        .edu-item { margin-bottom: 40px; padding-left: 30px; border-left: 2px solid var(--border); position: relative; }
+        .edu-item { margin-bottom: 30px; padding-left: 25px; border-left: 2px solid var(--border); position: relative; }
         .edu-item::before { content: ""; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; }
 
-        .badge-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .badge { padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px; }
-        .badge-accent { background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); }
+        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .badge { padding: 4px 10px; border-radius: 4px; font-weight: 700; font-size: 0.7rem; background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent); color: var(--accent); }
 
-        footer { padding: 100px 8% 50px; background: var(--bg-alt); text-align: center; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0, 0.2, 1); }
+        footer { padding: 60px 5%; background: var(--bg-alt); text-align: center; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 900px) { .project-featured { grid-template-columns: 1fr; } }
+        /* --- Responsive Mobile --- */
+        @media (max-width: 768px) {
+            header { padding: 10px 5%; }
+            nav { display: none; } /* Ocultamos nav simple en movil para priorizar espacio */
+            .section-title { margin-bottom: 30px; }
+            section { padding: 60px 5%; }
+        }
     </style>
 </head>
 <body>
 
     <div id="spotlight"></div>
 
-    <header id="main-header">
+    <header>
         <div class="logo">PAU<span>PULIDO</span></div>
-        <nav>
-            <ul>
-                <li><a href="#about">Experiencia</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#edu">Estudios</a></li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#about" data-key="nav-about">Experiencia</a></li>
+                    <li><a href="#projects" data-key="nav-projects">Proyectos</a></li>
+                    <li><a href="#edu" data-key="nav-edu">Estudios</a></li>
+                </ul>
+            </nav>
+            <div class="lang-selector">
+                <button class="lang-btn" id="langBtn">ES ▾</button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" onclick="changeLang('es')">Español</div>
+                    <div class="lang-option" onclick="changeLang('en')">English</div>
+                    <div class="lang-option" onclick="changeLang('ca')">Català</div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <section class="hero">
-        <span class="section-tag reveal">FullStack Developer @ Neorg</span>
+        <span class="section-tag reveal" data-key="hero-tag">FullStack Developer @ Neorg</span>
         <h1 class="reveal" id="typewriter"></h1>
-        <p class="reveal">Especialista en desarrollo web y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.</p>
+        <p class="reveal" data-key="hero-desc">Especialista en desarrollo web y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.</p>
     </section>
 
     <section id="about">
-        <span class="section-tag">Perfil Profesional</span>
-        <h2 class="section-title reveal">Trayectoria & Enfoque.</h2>
+        <span class="section-tag" data-key="about-tag">Perfil Profesional</span>
+        <h2 class="section-title reveal" data-key="about-title">Trayectoria & Enfoque.</h2>
         <div class="skills-grid">
             <div class="skill-card reveal" style="border-left: 4px solid var(--accent);">
-                <h3>1 Año de Experiencia</h3>
-                <p>Rodaje profesional en el stack <b>HTML, CSS, JS y PHP</b>. He trabajado en el desarrollo Frontend de sistemas <b>ERP</b> que interactúan con backend en PHP y he gestionado el mantenimiento y mejora de sitios web bajo <b>Symfony</b>.</p>
+                <h3 data-key="exp-h">1 Año de Experiencia</h3>
+                <p data-key="exp-p">Rodaje profesional en el stack <b>HTML, CSS, JS y PHP</b>. Desarrollo Frontend de sistemas <b>ERP</b> complejos y mantenimiento de sitios web en <b>Symfony</b>.</p>
             </div>
             <div class="skill-card reveal">
-                <h3>Autoaprendizaje</h3>
-                <p>Capacidad para dominar nuevas herramientas mediante la investigación directa. Enfoque resolutivo orientado a la eficiencia del código en entornos reales.</p>
+                <h3 data-key="auto-h">Autoaprendizaje</h3>
+                <p data-key="auto-p">Capacidad para dominar nuevas herramientas mediante investigación directa y análisis de documentación oficial en entornos reales.</p>
             </div>
         </div>
     </section>
 
     <section id="projects" style="background: var(--bg-alt);">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title reveal">Casos de Éxito</h2>
+        <span class="section-tag" data-key="proj-tag">Portfolio</span>
+        <h2 class="section-title reveal" data-key="proj-title">Casos de Éxito</h2>
         
         <div class="project-featured reveal">
             <div class="project-info">
-                <span style="color: var(--accent); font-weight: 700; font-size: 0.8rem;">PROYECTO PERSONAL</span>
+                <span style="color: var(--accent); font-weight: 700; font-size: 0.7rem;" data-key="proj-type">PROYECTO PERSONAL</span>
                 <h3>mystic-cards.com</h3>
-                <p>E-commerce TCG real. Optimización de carga (WPO), gestión de bases de datos y administración de servidor VPS propio.</p>
-                <a href="https://mystic-cards.com" target="_blank" class="project-link">Ver sitio en vivo</a>
+                <p data-key="proj-desc">E-commerce TCG real. Optimización de carga (WPO), gestión de bases de datos y administración de servidor VPS propio.</p>
+                <a href="https://mystic-cards.com" target="_blank" class="project-link" data-key="proj-btn">Ver sitio en vivo</a>
             </div>
-            <div style="height: 200px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.8rem;">LIVE PREVIEW</div>
+            <div style="height: 150px; background: rgba(255,255,255,0.02); border: 1px dashed var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.7rem;">PREVIEW</div>
         </div>
 
         <div class="skills-grid">
             <div class="skill-card reveal future-project">
-                <h3>[Desarrollo Symfony]</h3>
-                <p>Próximamente: Implementación de funcionalidades avanzadas y gestión de servicios bajo el ecosistema Symfony.</p>
+                <h3 data-key="f1-h">[Desarrollo Symfony]</h3>
+                <p data-key="f1-p">Próximamente: Implementación de funcionalidades avanzadas y servicios bajo el ecosistema Symfony.</p>
             </div>
             <div class="skill-card reveal future-project">
-                <h3>[Desarrollo Web PHP]</h3>
-                <p>Próximamente: Integración de lógica de negocio y optimización de interfaces dinámicas.</p>
+                <h3 data-key="f2-h">[Desarrollo Web PHP]</h3>
+                <p data-key="f2-p">Próximamente: Integración de lógica de negocio y optimización de interfaces dinámicas.</p>
             </div>
         </div>
     </section>
 
     <section id="edu">
-        <span class="section-tag">Trayectoria</span>
-        <h2 class="section-title reveal">Titulaciones e Idiomas</h2>
-        
+        <span class="section-tag" data-key="edu-tag">Trayectoria</span>
+        <h2 class="section-title reveal" data-key="edu-title">Titulaciones e Idiomas</h2>
         <div class="skills-grid">
             <div class="education-column">
-                <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Apps Multiplataforma (DAM)</h4></div>
-                <div class="edu-item reveal"><span>GS</span><h4>Desarrollo de Aplicaciones Web (DAW)</h4></div>
-                <div class="edu-item reveal"><span>Técnico</span><h4>Sistemas Microinformáticos y Redes (SMR)</h4></div>
+                <div class="edu-item reveal"><span>GS</span><h4 data-key="edu-1">Desarrollo de Apps Multiplataforma (DAM)</h4></div>
+                <div class="edu-item reveal"><span>GS</span><h4 data-key="edu-2">Desarrollo de Aplicaciones Web (DAW)</h4></div>
+                <div class="edu-item reveal"><span>Técnico</span><h4 data-key="edu-3">Sistemas Microinformáticos y Redes (SMR)</h4></div>
             </div>
-            
             <div class="skill-card reveal" style="height: fit-content;">
-                <h3>Idiomas</h3>
-                <p>Comunicación fluida en entornos multiculturales.</p>
+                <h3 data-key="lang-h">Idiomas</h3>
                 <div class="badge-container">
-                    <span class="badge badge-accent">Català: Nativo</span>
-                    <span class="badge badge-accent">Castellano: Nativo</span>
-                    <span class="badge badge-accent">English: B2</span>
+                    <span class="badge" data-key="l-ca">Català: Nativo</span>
+                    <span class="badge" data-key="l-es">Castellano: Nativo</span>
+                    <span class="badge" data-key="l-en">English: B2</span>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <span class="section-tag">Contacto</span>
-        <a href="mailto:paupcano75@gmail.com" style="font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 800; color: var(--text-main); text-decoration: none; display: block; margin: 30px 0;">paupcano75@gmail.com</a>
+        <a href="mailto:paupcano75@gmail.com" style="font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 800; color: var(--text-main); text-decoration: none; display: block; margin-bottom: 20px;">paupcano75@gmail.com</a>
         <p>Girona, España | +34 602 05 94 88</p>
-        <p style="margin-top: 80px; font-size: 0.65rem; color: #333; letter-spacing: 2px;">PAU PULIDO CANO // 2026</p>
+        <p style="margin-top: 40px; font-size: 0.6rem; color: #333; letter-spacing: 2px;">PAU PULIDO CANO // 2026</p>
     </footer>
 
     <script>
+        // --- Diccionario ---
+        const translations = {
+            es: {
+                "nav-about": "Experiencia", "nav-projects": "Proyectos", "nav-edu": "Estudios",
+                "hero-tag": "FullStack Developer @ Neorg", "hero-desc": "Especialista en desarrollo web y aplicaciones multiplataforma. Curiosidad insaciable y manejo experto del autoaprendizaje.",
+                "about-tag": "Perfil Profesional", "about-title": "Trayectoria & Enfoque.",
+                "exp-h": "1 Año de Experiencia", "exp-p": "Rodaje profesional en el stack <b>HTML, CSS, JS y PHP</b>. Desarrollo Frontend de sistemas <b>ERP</b> complejos y mantenimiento de sitios web en <b>Symfony</b>.",
+                "auto-h": "Autoaprendizaje", "auto-p": "Capacidad para dominar nuevas herramientas mediante investigación directa y análisis de documentación oficial.",
+                "proj-tag": "Portfolio", "proj-title": "Casos de Éxito", "proj-type": "PROYECTO PERSONAL", "proj-desc": "E-commerce TCG real. Optimización de carga (WPO) y administración de servidor VPS propio.", "proj-btn": "Ver sitio en vivo",
+                "f1-h": "[Desarrollo Symfony]", "f1-p": "Próximamente: Funcionalidades avanzadas y servicios bajo Symfony.",
+                "f2-h": "[Desarrollo Web PHP]", "f2-p": "Próximamente: Integración de lógica de negocio y optimización de interfaces.",
+                "edu-tag": "Trayectoria", "edu-title": "Titulaciones e Idiomas",
+                "edu-1": "Desarrollo de Apps Multiplataforma (DAM)", "edu-2": "Desarrollo de Aplicaciones Web (DAW)", "edu-3": "Sistemas Microinformáticos y Redes (SMR)",
+                "lang-h": "Idiomas", "l-ca": "Català: Nativo", "l-es": "Castellano: Nativo", "l-en": "English: B2",
+                "type": ["FullStack Developer", "Web Developer"]
+            },
+            en: {
+                "nav-about": "Experience", "nav-projects": "Projects", "nav-edu": "Education",
+                "hero-tag": "FullStack Developer @ Neorg", "hero-desc": "Specialist in web development and multiplatform apps. Insatiable curiosity and expert in self-learning.",
+                "about-tag": "Professional Profile", "about-title": "Journey & Focus.",
+                "exp-h": "1 Year of Experience", "exp-p": "Professional experience in <b>HTML, CSS, JS and PHP</b>. Frontend development for complex <b>ERP</b> systems and web maintenance in <b>Symfony</b>.",
+                "auto-h": "Self-learning", "auto-p": "Ability to master new tools through direct research and analysis of official documentation.",
+                "proj-tag": "Portfolio", "proj-title": "Success Stories", "proj-type": "PERSONAL PROJECT", "proj-desc": "Real TCG E-commerce. WPO optimization and private VPS server administration.", "proj-btn": "Live Website",
+                "f1-h": "[Symfony Dev]", "f1-p": "Coming soon: Advanced features and services under the Symfony ecosystem.",
+                "f2-h": "[PHP Web Dev]", "f2-p": "Coming soon: Business logic integration and dynamic interface optimization.",
+                "edu-tag": "Background", "edu-title": "Degrees & Languages",
+                "edu-1": "Multiplatform App Development (DAM)", "edu-2": "Web Application Development (DAW)", "edu-3": "Microcomputer Systems and Networks (SMR)",
+                "lang-h": "Languages", "l-ca": "Catalan: Native", "l-es": "Spanish: Native", "l-en": "English: B2",
+                "type": ["FullStack Developer", "Software Engineer"]
+            },
+            ca: {
+                "nav-about": "Experiència", "nav-projects": "Projectes", "nav-edu": "Estudis",
+                "hero-tag": "FullStack Developer @ Neorg", "hero-desc": "Especialista en desenvolupament web i aplicacions multiplataforma. Curiositat insaciable i maneig expert de l'autoaprenentatge.",
+                "about-tag": "Perfil Professional", "about-title": "Trajectòria i Enfocament.",
+                "exp-h": "1 Any d'Experiència", "exp-p": "Rodatge professional en l'stack <b>HTML, CSS, JS i PHP</b>. Desenvolupament Frontend de sistemes <b>ERP</b> complexos i manteniment de webs en <b>Symfony</b>.",
+                "auto-h": "Autoaprenentatge", "auto-p": "Capacitat per dominar noves eines mitjançant la recerca directa i l'anàlisi de documentació oficial.",
+                "proj-tag": "Portfolio", "proj-title": "Casos d'Èxit", "proj-type": "PROJECTE PERSONAL", "proj-desc": "E-commerce TCG real. Optimització de càrrega (WPO) i administració de servidor VPS propi.", "proj-btn": "Veure lloc en viu",
+                "f1-h": "[Desenvolupament Symfony]", "f1-p": "Properament: Funcionalitats avançades i serveis sota l'ecosistema Symfony.",
+                "f2-h": "[Desenvolupament Web PHP]", "f2-p": "Properament: Integració de lògica de negoci i optimització d'interfícies.",
+                "edu-tag": "Trajectòria", "edu-title": "Titulacions i Idiomes",
+                "edu-1": "Desenvolupament d'Apps Multiplataforma (DAM)", "edu-2": "Desenvolupament d'Aplicacions Web (DAW)", "edu-3": "Sistemes Microinformàtics i Xarxes (SMR)",
+                "lang-h": "Idiomes", "l-ca": "Català: Natiu", "l-es": "Castellà: Natiu", "l-en": "Anglès: B2",
+                "type": ["FullStack Developer", "Web Developer"]
+            }
+        };
+
+        let currentLang = 'es';
+
+        function changeLang(lang) {
+            currentLang = lang;
+            document.getElementById('langBtn').innerText = lang.toUpperCase() + ' ▾';
+            document.getElementById('langDropdown').classList.remove('active');
+            
+            // Actualizar textos estáticos
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Reiniciar animación typing con nuevos textos
+            charIndex = 0;
+            textIndex = 0;
+            isDeleting = false;
+        }
+
+        // --- Dropdown Logic ---
+        document.getElementById('langBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('langDropdown').classList.toggle('active');
+        });
+        document.addEventListener('click', () => document.getElementById('langDropdown').classList.remove('active'));
+
+        // --- Spotlight & Typing ---
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', e => {
             spotlight.style.setProperty('--x', e.clientX + 'px');
             spotlight.style.setProperty('--y', e.clientY + 'px');
         });
 
-        const textArr = ["FullStack Developer", "Web Developer"];
         let textIndex = 0, charIndex = 0, isDeleting = false;
-        const typeTarget = document.getElementById('typewriter');
-
         function type() {
-            const current = textArr[textIndex];
-            typeTarget.innerHTML = current.substring(0, charIndex + (isDeleting ? -1 : 1)) + '<span class="cursor"></span>';
+            const currentArr = translations[currentLang].type;
+            const current = currentArr[textIndex];
+            document.getElementById('typewriter').innerHTML = current.substring(0, charIndex + (isDeleting ? -1 : 1)) + '<span class="cursor"></span>';
             charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
-            let typeSpeed = isDeleting ? 50 : 100;
-            if (!isDeleting && charIndex === current.length) { isDeleting = true; typeSpeed = 2000; }
-            else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % textArr.length; typeSpeed = 500; }
-            setTimeout(type, typeSpeed);
+            let speed = isDeleting ? 50 : 100;
+            if (!isDeleting && charIndex === current.length) { isDeleting = true; speed = 2000; }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % currentArr.length; speed = 500; }
+            setTimeout(type, speed);
         }
 
-        const observer = new IntersectionObserver((entries) => {
+        // --- Scroll Reveal ---
+        const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-        window.onload = () => { type(); };
+        window.onload = type;
     </script>
 </body>
 </html>
